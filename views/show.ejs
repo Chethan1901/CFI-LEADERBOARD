@@ -15,22 +15,26 @@
 			.main {
 				border: 2px solid black;
 				display: flex;
-				justify-content: space-around;
+				height: 80vh;
+				width: 90vh;
+				margin: 0 auto ;
+
 			}
 
 			.profile {
 				border: 2px solid rgb(255, 0, 0);
-                width: 50%;
+				background-color: rgba(243, 199, 206, 0.989);
+				padding-top: 15%;
+                width: 60%;
 			}
 
 			.container {
-				display: flex;
-				/* flex-direction: row; */
-				/* gap: 20px; */
-				align-items: center;
-                justify-content: space-evenly ;
-                width: 100%;
-
+				height: 10%;
+                width: 95%;
+				/* border: 2px solid red; */
+				padding: 4px;
+				padding-top:4px ;
+				border-bottom: 1px solid gray;
 			}
 		
             .pic{
@@ -40,6 +44,39 @@
             .attended{
                 float: right;
             }
+			.container img{
+				height: 20px;
+				width: 20px;
+				border-radius: 50%;
+			}
+			.list{
+				border: 2px solid yellow;
+				width: 40%;
+				overflow: scroll;
+				overflow-x: hidden;
+			}
+			.img img{
+				height: 100px;
+				width: 100px;
+				border: 1px solid red;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				border-radius: 50%;
+			}
+			.img{
+				border: 1px solid green;
+			}
+			.points {
+				display: flex;
+				justify-content: space-evenly;
+				border: 1px solid red;
+				height: 15%;
+				font-size: larger;
+			}
+			.name{
+				text-align: center;
+			}
             
 		</style>
 	</head>
@@ -47,19 +84,47 @@
 		<h1>LeaderBoard</h1>
 
 		<div class="main">
-			<div class="profile">PROFILE</div>
+			<div class="profile">
+				<div class="img"> <img src="<%= json[0].pic %>"> </div>
+				<div class="name">Alex</div>
+				<div class="points">
+					<div>H</div>
+					<div>E</div>
+					<div>L</div>
+				</div>
+			</div>
 			<div class="list">
 				<% json.forEach((json)=> { %>
 				<div class="container">
-					<div class="pic">
-						<img src="<%= json.pic %>" />
-					</div>
-					<div class="names"><%= json.name %></div>
-					<div class="attended"><%= json.classes %></div>
-					<!-- <div class="assignments"><%= json.assignment %></div> -->
+					<span><%= json.id %></span>
+					<img  src="<%= json.pic %>" />
+					<span class="names"><%= json.name %></span>
+					<span class="attended"><%= json.classes %></span>
 				</div>
 				<% }) %>
 			</div>
 		</div>
 	</body>
+
+	<script>
+		console.log("hello");
+		let profile = document.querySelector(".img img");
+		let name = document.querySelector(".name");
+		let p1 = document.querySelector(".points div:nth-of-type(1)");
+		let p2 = document.querySelector(".points div:nth-of-type(2)");
+		let p3 = document.querySelector(".points div:nth-of-type(3)");
+
+		console.log(profile, name, p1, p2, p3);
+
+		let element = document.getElementsByClassName("container");
+		/* console.log(element); */
+		for( let i=0; i<element.length; i++){
+			element[i].addEventListener('click',()=>{
+				name.innerText = element[i].children[2].innerText;
+				profile.src = element[i].children[1].src;
+				p1.innerText = element[i].children[0].innerText;
+				p2.innerText = element[i].children[0].innerText;
+			})
+		}
+	</script>
 </html>
