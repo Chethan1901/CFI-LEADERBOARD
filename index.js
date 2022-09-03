@@ -30,7 +30,7 @@ app.get('/',async (req,res)=>{
     const getRows = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "Sheet1!A:D",
+        range: "Sheet1!A2:E",
     });
 
     let data = getRows.data.values;
@@ -41,7 +41,8 @@ app.get('/',async (req,res)=>{
             "id": x[0],
             "name": x[1],
             "classes": x[2],
-            "assignment":x[3]
+            "assignment":x[3],
+            "pic":x[4]
         }
     })
     //logging onto server terminal
@@ -55,3 +56,7 @@ app.get('/',async (req,res)=>{
 app.listen(3000, (req,res)=>{
     console.log("running on port 3000");
 })
+
+
+
+
