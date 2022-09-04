@@ -30,7 +30,7 @@ app.get('/',async (req,res)=>{
     const getRows = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "Sheet1!A2:E",
+        range: "Sheet1!A2:F",
     });
 
     let data = getRows.data.values;
@@ -42,7 +42,9 @@ app.get('/',async (req,res)=>{
             "name": x[1],
             "classes": x[2],
             "assignment":x[3],
-            "pic":x[4]
+            "pic": x[4],
+            "feedback": x[5]
+            
         }
     })
     //logging onto server terminal
