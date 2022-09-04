@@ -1,130 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<title>Document</title>
-		<!-- <link rel="stylesheet" href="style.css"> -->
-		<style>
-			* {
-				margin: 0;
-				padding: 0;
-			}
-			h1 {
-				text-align: center;
-			}
-			.main {
-				border: 2px solid black;
-				display: flex;
-				height: 80vh;
-				width: 90vh;
-				margin: 0 auto ;
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
 
-			}
+      /* Font imported */
+      @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Yanone+Kaffeesatz:wght@300&display=swap");
 
-			.profile {
-				border: 2px solid rgb(255, 0, 0);
-				background-color: rgba(243, 199, 206, 0.989);
-				padding-top: 15%;
-                width: 60%;
-			}
+      h1 {
+        text-align: center;
+      }
+      .main {
+        /* border: 2px solid black; */
+        display: flex;
+        height: 80vh;
+        width: 90vh;
+        margin: 0 auto;
+      }
 
-			.container {
-				height: 10%;
-                width: 95%;
-				/* border: 2px solid red; */
-				padding: 4px;
-				padding-top:4px ;
-				border-bottom: 1px solid gray;
-			}
-		
-            .pic{
-                float: left;
-            }
-       
-            .attended{
-                float: right;
-            }
-			.container img{
-				height: 20px;
-				width: 20px;
-				border-radius: 50%;
-			}
-			.list{
-				border: 2px solid yellow;
-				width: 40%;
-				overflow: scroll;
-				overflow-x: hidden;
-			}
-			.img img{
-				height: 100px;
-				width: 100px;
-				border: 1px solid red;
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-				border-radius: 50%;
-			}
-			.img{
-				border: 1px solid green;
-			}
-			.points {
-				display: flex;
-				justify-content: space-evenly;
-				border: 1px solid red;
-				height: 15%;
-				font-size: larger;
-			}
-			.name{
-				text-align: center;
-			}
-            
-		</style>
-	</head>
-	<body>
-		<h1>LeaderBoard</h1>
+      .profile {
+        /* border: 2px solid rgb(255, 0, 0); */
+        background-color: #eeeeff;
+        padding-top: 15%;
+        width: 60%;
+      }
 
-		<div class="main">
-			<div class="profile">
-				<div class="img"> <img src="<%= json[0].pic %>"> </div>
-				<div class="name">Alex</div>
-				<div class="points">
-					<div>H</div>
-					<div>E</div>
-					<div>L</div>
-				</div>
-			</div>
-			<div class="list">
-				<% json.forEach((json)=> { %>
-				<div class="container">
-					<span><%= json.id %></span>
-					<img  src="<%= json.pic %>" />
-					<span class="names"><%= json.name %></span>
-					<span class="attended"><%= json.classes %></span>
-				</div>
-				<% }) %>
-			</div>
-		</div>
-	</body>
+      .container {
+        height: 10%;
+        width: 95%;
+        /* border: 2px solid red; */
+        padding: 4px;
+        padding-top: 4px;
+        /* margin-top: 38px; */
+        /* border-bottom: 1px solid #8080801a; */
+        /* text-align: center; */
+        transition: transform 250ms;
+      }
 
-	<script>
-		console.log("hello");
-		let profile = document.querySelector(".img img");
-		let name = document.querySelector(".name");
-		let p1 = document.querySelector(".points div:nth-of-type(1)");
-		let p2 = document.querySelector(".points div:nth-of-type(2)");
-		let p3 = document.querySelector(".points div:nth-of-type(3)");
+      /* container hover */
+      .container:hover {
+        background-color: #ffffff;
+        transform: translateY(-10px);
+      }
 
-		console.log(profile, name, p1, p2, p3);
+      .pic {
+        float: left;
+      }
 
-		let element = document.getElementsByClassName("container");
-		/* console.log(element); */
-		for( let i=0; i<element.length; i++){
-			element[i].addEventListener('click',()=>{
-				name.innerText = element[i].children[2].innerText;
-				profile.src = element[i].children[1].src;
-				p1.innerText = element[i].children[0].innerText;
-				p2.innerText = element[i].children[0].innerText;
-			})
-		}
-	</script>
+      .attended {
+        float: right;
+      }
+      .container img {
+        /* padding: auto; */
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+      }
+      .list {
+        font-family: "Lato", sans-serif;
+        font-family: "Yanone Kaffeesatz", sans-serif;
+        font-size: smaller;
+
+        /* border: 2px solid yellow; */
+        width: 40%;
+        overflow: scroll;
+        overflow-x: hidden;
+        background-color: #f8f8ff;
+      }
+
+      /* Overall Position  */
+      .subhead {
+        font-family: "Lato", sans-serif;
+        font-family: "Yanone Kaffeesatz", sans-serif;
+        text-align: center;
+        padding: 8px 0px 8px 0px;
+        /* background: ; */
+        background-color: #eeeeff;
+        font-weight: bold;
+        position: fixed;
+        width: 24%;
+        z-index: 1;
+      }
+
+      /* scroll bar  */
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .list::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .list {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+      /* full details image */
+      .img img {
+        height: 100px;
+        width: 100px;
+        /* border: 1px solid red; */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50%;
+      }
+      /* full details image box */
+      /*.img {
+        /* border: 1px solid green; 
+      } */
+      .points {
+        display: flex;
+        justify-content: space-evenly;
+        /* border: 1px solid red; */
+        height: 15%;
+        font-size: larger;
+      }
+      .name {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>LeaderBoard</h1>
+
+    <div class="main">
+      <div class="profile">
+        <div class="img"><img src="<%= json[0].pic %>" /></div>
+        <div class="name">Alex</div>
+        <div class="points">
+          <div>H</div>
+          <div>E</div>
+          <div>L</div>
+        </div>
+      </div>
+      <div class="list">
+        <div class="subhead">
+          <h5>Overall Positions</h5>
+        </div>
+        <% json.forEach((json)=> { %>
+        <div class="container">
+          <span><%= json.id %></span>
+          <img src="<%= json.pic %>" />
+          <span class="names"><%= json.name %></span>
+          <span class="attended"><%= json.classes %></span>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    console.log("hello")
+    let profile = document.querySelector(".img img")
+    let name = document.querySelector(".name")
+    let p1 = document.querySelector(".points div:nth-of-type(1)")
+    let p2 = document.querySelector(".points div:nth-of-type(2)")
+    let p3 = document.querySelector(".points div:nth-of-type(3)")
+
+    console.log(profile, name, p1, p2, p3)
+
+    let element = document.getElementsByClassName("container")
+    /* console.log(element); */
+    for (let i = 0; i < element.length; i++) {
+      element[i].addEventListener("click", () => {
+        name.innerText = element[i].children[2].innerText
+        profile.src = element[i].children[1].src
+        p1.innerText = element[i].children[0].innerText
+        p2.innerText = element[i].children[0].innerText
+      })
+    }
+  </script>
 </html>
