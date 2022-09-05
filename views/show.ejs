@@ -1,267 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
+	<head>
+		<meta charset="UTF-8" />
+		<title>Document</title>
+		<!-- <link rel="stylesheet" href="style.css"> -->
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
 
-      /* Font imported */
-      @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Yanone+Kaffeesatz:wght@300&display=swap");
+			
+			/* Font imported */
+			@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Yanone+Kaffeesatz:wght@300&display=swap");
+			
+			
+			.CFI{display: flex;
+				justify-content: center;
+				align-items:center ;
+			text-align: center;
+				height: 5vh;
+			}
+			.main {
+				/* border: 2px solid black; */
 
-      h1 {
-        padding: 10px;
-        text-align: center;
-      }
-      .main {
-        /* border: 2px solid black; */
+				/* display: flex; */
+				display: grid;
+				grid-template-columns: repeat(5, 1fr);
+				height: 80vh;
+				width: 90vh;
+				margin: 0 auto;
+				box-shadow: 10px 10px 10px 10px rgb(129, 129, 129);
+			}
 
-        /* display: flex; */
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        height: 80vh;
-        width: 90vh;
-        margin: 0 auto;
-        box-shadow: 10px 10px 10px 10px rgb(129, 129, 129);
-      }
+			.header {
+				display: flex;
+				text-align: center;
+				justify-content: center;
+				align-items: center;
+				grid-column: 1 / -1;
+				/* border: 2px solid green; */
+				height: 7vh;
+			}
 
-      .header {
-        display: flex;
-        text-align: center;
-        justify-content: space-evenly;
-        align-items: center;
-        grid-column: 1 / -1;
-        /* border: 2px solid green; */
-        height: 7vh;
-      }
+			.logo {
+				padding-right: 20px;
+			}
 
-      .container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-        grid-auto-flow: column;
-        text-align: center;
-        height: 6.5vh;
-        width: 94%;
-        justify-content: space-around;
-        /* border: 2px solid red; */
-        padding: 4px;
-        padding-top: 4px;
-        /* margin-top: 38px; */
-        border-bottom: 1px solid #8080801a;
-        /* text-align: center; */
-        transition: transform 250ms;
-        font-weight: bold;
-      }
+			.header h3 {
+				text-align: center;
+			}
 
-       .container:hover {
-        background-color: #ffffff;
-        transform: translateY(-10px);
-        /* border: 2px solid rgb(68, 68, 68); */
-	   }
-  
-      .pic {
-        float: left;
-      }
+			.container {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+				justify-content: center;
+				align-content: center;
+				align-items: center;
+				grid-auto-flow: column;
+				text-align: center;
+				height: 6.5vh;
+				width: 97%;
+				justify-content: space-around;
+				/* border: 2px solid red; */
+				padding: 4px;
+				padding-top: 4px;
+				/* margin-top: 38px; */
+				border-bottom: 1px solid #8080801a;
+				/* text-align: center; */
+				transition: transform 250ms;
+				font-weight: bold;
+			}
 
-      .attended {
-        text-align: end;
+			.container:hover {
+				background-color: #e6e1e1;
+				transform: translateY(-10px);
+				/* border: 2px solid rgb(68, 68, 68); */
+			}
 
-        grid-column: 5/-1;
-      }
-      .container img {
-        /* padding: auto; */
-        border: 2px solid rgb(255, 255, 255);
-        height: 50px;
-        width: 50px;
-        border-radius: 50%;
-        /* vertical-align: middle;
+			.container:focus {
+				background-color: #e6e1e1;
+				transform: translateY(-10px);
+			}
+
+			.pic {
+				float: left;
+			}
+
+			.attended {
+				text-align: end;
+
+				grid-column: 5/-1;
+			}
+			.container img {
+				/* padding: auto; */
+				border: 2px solid rgb(255, 255, 255);
+				height: 50px;
+				width: 50px;
+				border-radius: 50%;
+				/* vertical-align: middle;
 		 display: inline-block; */
-      }
-      .list {
-        grid-column: 4/-1;
-        font-family: "Lato", sans-serif;
-        font-family: "Yanone Kaffeesatz", sans-serif;
-        font-size: smaller;
+			}
+			.list {
+				/* position: absolute; */
+				grid-column: 4/-1;
+				font-family: "Lato", sans-serif;
+				font-family: "Yanone Kaffeesatz", sans-serif;
+				font-size: smaller;
 
-        /* border: 2px solid yellow; */
-        width: 99%;
-        overflow-x: hidden;
-        background-color: #f8f8ff;
-      }
+				/* border: 2px solid yellow; */
+				width: 99%;
+				overflow-x: hidden;
+				background-color: #f8f8ff;
+			}
 
-      .list::-webkit-scrollbar {
-        display: none;
-      }
+			.list::-webkit-scrollbar {
+				display: none;
+			}
 
-      .img img {
-        height: 18vh;
-        width: 18vh;
-        border: 3px solid #ffffff;
-        /* border: 1px solid red; */
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 50%;
-      }
+			.img img {
+				height: 18vh;
+				width: 18vh;
+				border: 3px solid #ffffff;
+				/* border: 1px solid red; */
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				border-radius: 50%;
+			}
 
-      .points {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        /* justify-content: space-evenly; */
-        /* border: 1px solid red; */
-        text-align: center;
-        height: 15%;
-        font-size: larger;
-      }
-      .name {
-        text-align: center;
-      }
+			.points {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				/* justify-content: space-evenly; */
+				/* border: 1px solid red; */
+				text-align: center;
+				height: 15%;
+				font-size: larger;
+			}
+			.name {
+				text-align: center;
+			}
 
-      .subhead {
-        font-family: "Lato", sans-serif;
-        font-family: "Yanone Kaffeesatz", sans-serif;
-        font-size: 2vh;
-        display: flex;
-        width: 99%;
-        height: 4vh;
-        /* border: 2px solid red; */
-        justify-content: center;
-        align-items: center;
-      }
+			.subhead {
+				position: -webkit-sticky;
+				position: sticky;
+				top: 0;
+				background-color: #bebeff;
+				font-family: "Lato", sans-serif;
+				font-family: "Yanone Kaffeesatz", sans-serif;
+				font-size: 2vh;
+				display: flex;
+				width: 99%;
+				height: 5vh;
+				/* border: 2px solid red; */
+				justify-content: center;
+				align-items: center;
+				z-index: 1;
+			}
 
-      /* PROFILE */
-      .profile {
-        grid-column: 1 / 4;
-        background-color: #eeeeff;
-        padding-top: 15%;
-        width: 100%;
-        font-family: "Lato", sans-serif;
-        font-family: "Yanone Kaffeesatz", sans-serif;
-      }
+			/* PROFILE */
+			.profile {
+				grid-column: 1 / 4;
+				background-color: #eeeeff;
+				padding-top: 15%;
+				width: 100%;
+				font-family: "Lato", sans-serif;
+				font-family: "Yanone Kaffeesatz", sans-serif;
+			}
 
-      .profile .name {
-        padding-top: 2vh;
-        padding-bottom: 2vh;
-        font-size: 3vh;
-      }
+			.profile .name {
+				padding-top: 2vh;
+				padding-bottom: 2vh;
+				font-size: 3vh;
+			}
 
-      .profile .points {
-        padding-top: 5vh;
-        font-size: 7vh;
-      }
+			.profile .points {
+				padding-top: 5vh;
+				font-size: 7vh;
+			}
 
-      .profile .label {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        font-size: larger;
-        text-align: center;
-      }
-      .box {
-        background-color: rgb(15, 9, 1);
-      }
+			.profile .label {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				font-size: larger;
+				text-align: center;
+			}
+			.box {
+				background-color: rgb(15, 9, 1);
+			}
 
-      .discription {
-        padding-top: 10vh;
-        text-align: center;
-        font-weight: bold;
-      }
+			.discription {
+				padding-top: 10vh;
+				text-align: center;
+				font-weight: bold;
+			}
 
+			.names{
+				grid-column: 3 / 5;
+				text-align: left;
+			}
 
+			@media screen and (max-width: 890px){
 
-	  @media only screen and (max-width: 700px) {
-  body {
-     background-color: rgb(0, 191, 255); 
-   } 
-} 
+				*{
+					width: 100%;
+				}
+				.main {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 95vw;
+			}
+			
+			.profile{
+				padding: 0%;
+			}
+			
+			.header {
+				height: 25vh;
+			}
 
+			.profile .points{
+				padding: 0%;
+			}
 
-    </style>
-  </head>
-  <body>
-    <h1>Leaderboard</h1>
+			.profile .name{
+				padding: 0%;
+			}
 
-    <div class="main">
-      <div class="header">
-        <img src="../public/images/CFI_blue.png" />
-        <h3>Code for India foundation</h3>
-      </div>
-      <div class="profile">
-        <div class="img"><img src="<%= json[0].pic %>" /></div>
-        <div class="name"><%= json[0].name %></div>
-        <div class="points">
-          <div><%= json[0].id %></div>
-          <div><%= json[0].classes %></div>
-          <div><%= json[0].assignment %></div>
-        </div>
-        <div class="label">
-          <div>Rank</div>
-          <div>Classes Attended</div>
-          <div>Assignments</div>
-        </div>
-        <div class="discription">
-          <div>
-            <p><%= json[0].feedback %></p>
-          </div>
-        </div>
-      </div>
+			.img img{
+				height: 15vh;
+				width: 15vh;
+			}
 
-      <div class="list">
-        <div class="subhead">
-          <h5>Overall Positions</h5>
-        </div>
-        <% json.forEach((json)=> { %>
-        <div class="container">
-          <span><%= json.id %>.</span>
-          <img src="<%= json.pic %>" />
-          <span class="names"><%= json.name %></span>
-          <span class="attended"><%= json.classes %> Pts</span>
-        </div>
-        <% }) %>
-      </div>
-    </div>
-  </body>
+			.subhead{
+				text-align: center;
+			}
 
-  <script>
-    console.log("hello")
-    let profile = document.querySelector(".img img")
-    let name = document.querySelector(".name")
-    let p1 = document.querySelector(".points div:nth-of-type(1)")
-    let p2 = document.querySelector(".points div:nth-of-type(2)")
-    let p3 = document.querySelector(".points div:nth-of-type(3)")
+			.discription{
+				padding-top: 4vh;
+			}
 
-    console.log(profile, name, p1, p2, p3)
+			.profile .label{
+				padding-top: 2vh;
+			}
 
-    let element = document.getElementsByClassName("container")
-    /* console.log(element); */
-    for (let i = 0; i < element.length; i++) {
-      element[i].addEventListener("click", () => {
-        name.innerText = element[i].children[2].innerText
-        profile.src = element[i].children[1].src
-        p1.innerText = element[i].children[0].innerText
-        p2.innerText = element[i].children[0].innerText
-      })
-    }
+			.img {
+				margin-top: 1vh;
+				margin-bottom: 1vh;
+			}
+
+			.name{
+				margin-bottom: 1vh;
+			}
+
+			.header{
+				justify-content: space-around;
+			}
+
+			
+			}
 
 
-	let points = 0 
+		</style>
+	</head>
+	<body>
+		<div class="CFI">
+			<h2><span><img class="logo" src="../public/images/CFI_blue.png" />
+			</span>Code for India</h2>
+			
+		</div>
+		<div class="main">
+			<div class="header">
+				<h3>Leaderboard</h3>
+			</div>
+			
+			<div class="profile">
+				<div class="img"><img src="<%= json[0].pic %>" /></div>
+				<div class="name"><%= json[0].name %></div>
+				<div class="points">
+					<div><%= json[0].id %></div>
+					<div><%= json[0].classes %></div>
+					<div><%= json[0].assignment %></div>
+				</div>
+				<div class="label">
+					<div>Rank</div>
+					<div>Classes Attended</div>
+					<div>PRs</div>
+				</div>
+				<div class="discription">
+					<div>
+						<p><%= json[0].feedback %></p>
+					</div>
+				</div>
+			</div>
 
-	for(let i=0;i<p3.innerText;i++){
-		points+= 2
-	}
-	for(let i=0;i<p3.innerText;i++){
-		points+= 2
-	}
+			<div class="list">
+				<div class="subhead">
+					<h5>Overall Positions</h5>
+				</div>
+				<% json.forEach((json)=> { %>
+				<div class="container">
+					<span><%= json.id %>.</span>
+					<img src="<%= json.pic %>" />
+					<span class="names"><%= json.name %></span>
+					<span class="attended"><%= json.classes %> Pts</span>
+				</div>
+				<% }) %>
+			</div>
+		</div>
+	</body>
 
-	console.log(points)
+	<script>
+		console.log("hello");
+		let profile = document.querySelector(".img img");
+		let name = document.querySelector(".name");
+		let p1 = document.querySelector(".points div:nth-of-type(1)");
+		let p2 = document.querySelector(".points div:nth-of-type(2)");
+		let p3 = document.querySelector(".points div:nth-of-type(3)");
 
+		console.log(profile, name, p1, p2, p3);
 
+		let element = document.getElementsByClassName("container");
+		/* console.log(element); */
+		for (let i = 0; i < element.length; i++) {
+			element[i].addEventListener("click", () => {
+				name.innerText = element[i].children[2].innerText;
+				profile.src = element[i].children[1].src;
+				p1.innerText = element[i].children[0].innerText;
+				p2.innerText = element[i].children[0].innerText;
+			});
+		}
 
-  </script>
+		// let points = 0;
+
+		// for (let i = 0; i < p3.innerText; i++) {
+		// 	points += 2;
+		// }
+		// for (let i = 0; i < p3.innerText; i++) {
+		// 	points += 2;
+		// }
+
+		// console.log(points);
+	</script>
 </html>
