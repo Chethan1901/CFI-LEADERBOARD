@@ -1,10 +1,24 @@
-import Express  from "express";
-import { google } from "googleapis";
+// import path from "path";
+// import { google } from "googleapis";
 
+const Express = require("express");
+const path = require("path");
+const {google} = require("googleapis");
 const app = Express();
+
+
+const staticPath = path.join(__dirname,"/public");
 
 app.set("view engine", "ejs");
 app.use(Express.urlencoded({ extended: true }));
+
+app.use(Express.static(staticPath));
+
+// const publicpath = path.resolve(__dirname,'public');
+// app.use(publicpath, Express.static('static'));
+
+
+
 
 app.get('/',async (req,res)=>{
     const auth = new google.auth.GoogleAuth({
@@ -30,7 +44,7 @@ app.get('/',async (req,res)=>{
     const getRows = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "Sheet1!A2:F",
+        range: "Sheet1!A2:G",
     });
 
     let data = getRows.data.values;
@@ -43,8 +57,8 @@ app.get('/',async (req,res)=>{
             "classes": x[2],
             "assignment":x[3],
             "pic": x[4],
-            "feedback": x[5]
-            
+            "feedback": x[5],
+            "pts":x[6]
         }
     })
     //logging onto server terminal
